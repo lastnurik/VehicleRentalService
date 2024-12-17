@@ -51,7 +51,7 @@ public class RentalService {
     public void printVehicleList() {
         System.out.println("The rental service has following vehicles:");
         for (Vehicle vehicle : vehicleList) {
-            System.out.println(vehicle.getBrand());
+            System.out.println("-" + vehicle.getBrand());
         }
         System.out.println();
     }

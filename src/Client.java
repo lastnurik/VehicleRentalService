@@ -72,8 +72,12 @@ public class Client {
     public void printVehicleList() {
         System.out.println(name + " has following vehicles:");
         for (Vehicle vehicle : vehicleList) {
-            System.out.println(vehicle.getBrand());
+            System.out.println("-" + vehicle.getBrand());
         }
         System.out.println();
+    }
+
+    public void printClientInfo() {
+        System.out.println(name + "'s phone number is " + phone + ", email is " + email + " and he has " + cashAmount + " amount of cash");
     }
 }
