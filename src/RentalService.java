@@ -13,13 +13,6 @@ public class RentalService {
         vehicleList = new ArrayList<>();
     }
 
-    public RentalService(String rentalName, String address, String email, List<Vehicle> vehicleList) {
-        this.rentalName = rentalName;
-        this.address = address;
-        this.email = email;
-        this.vehicleList = vehicleList;
-    }
-
     public String getRentalName() {
         return rentalName;
     }
@@ -49,7 +42,7 @@ public class RentalService {
     }
 
     public void printVehicleList() {
-        System.out.println("The rental service has following vehicles:");
+        System.out.println("The rental service " + rentalName + " has following vehicles:");
         for (Vehicle vehicle : vehicleList) {
             System.out.println("-" + vehicle.getBrand());
         }
@@ -70,17 +63,17 @@ public class RentalService {
 
     public void sellTheVehicle(Client client, Vehicle vehicle) {
         if (!this.vehicleList.contains(vehicle)) {
-            System.out.println("There is no such vehicle!");
+            System.out.println("There is no such vehicle as " + vehicle.getBrand() + " " + vehicle.getModel() + " at " + rentalName +  "!");
             return;
         }
         if (client.getCashAmount() >= vehicle.getPrice()) {
             client.setCashAmount(client.getCashAmount() - vehicle.getPrice());
             this.vehicleList.remove(vehicle);
             client.addVehicle(vehicle);
-            System.out.println("Sold the " + vehicle.getBrand() + " to " + client.getName());
+            System.out.println("Sold the " +vehicle.getBrand() + " " + vehicle.getModel() + " to " + client.getName() + " at " + rentalName +  "!");
         }
         else {
-            System.out.println("Not enough cash!" + client.getName() + " has only " + client.getCashAmount() + ", and the vehicle costs " + vehicle.getPrice());
+            System.out.println("Not enough cash! " + client.getName() + " has only " + client.getCashAmount() + ", and the vehicle " + vehicle.getBrand() + " " + vehicle.getModel() + " costs " + vehicle.getPrice());
         }
     }
 }

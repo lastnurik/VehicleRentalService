@@ -7,19 +7,26 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         RentalService rentalService = new RentalService("AutoKz", "Kabanbay Batyr 60A", "info@auto.kz");
+        RentalService rentalService2 = new RentalService("ToyotaCenter", "Mangilik El 50", "info@toyota.kz");
         List<Vehicle> vehicles = new ArrayList<>();
+        List<Vehicle> vehicles2 = new ArrayList<>();
         Vehicle bentely = new Vehicle("Sedan", "Bentley", "Flying spur", 1000, 2023, 115000000.0f);
         Vehicle bmwM5 = new Vehicle("Sedan", "BMW", "m5", 2400, 2022, 80000000.0f);
         Vehicle bmwM4 = new Vehicle("Coupe", "BMW", "m4", 5600, 2021, 65000000.0f);
         Vehicle lambo = new Vehicle("SUV", "Lamborgini", "Urus", 2000, 2021, 150000000.0f);
         Vehicle cobalt = new Vehicle("Sedan", "Chevrolet", "Cobalt", 7000, 2023, 6000000.0f);
+        Vehicle camry70 = new Vehicle("Sedan", "Toyota", "Camry", 9500, 2023, 20000000.0f);
         Vehicle mercedes = new Vehicle("Sedan", "Mercedes", "cls 63", 8000, 2023, 7000000.0f);
         vehicles.add(bentely);
         vehicles.add(bmwM5);
         vehicles.add(bmwM4);
         vehicles.add(lambo);
         vehicles.add(cobalt);
+        vehicles2.add(camry70);
+        vehicles2.add(camry70);
+        vehicles2.add(camry70);
         rentalService.setVehicleList(vehicles);
+        rentalService2.setVehicleList(vehicles2);
         rentalService.printVehicleList();
 
         Client client1 = new Client("Arsen", 26, "arsen77@gmail.com", "+77057655676", 12500700.5f);
@@ -35,6 +42,8 @@ public class Main {
         client2.printCashAmount();
         rentalService.sellTheVehicle(client2, bmwM4);
         rentalService.sellTheVehicle(client2, cobalt);
+        rentalService.sellTheVehicle(client2, camry70);
+        rentalService2.sellTheVehicle(client2, camry70);
         client1.printVehicleList();
         client2.printVehicleList();
     }
