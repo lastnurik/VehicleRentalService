@@ -1,4 +1,8 @@
+import java.text.DecimalFormat;
+
 public class Vehicle {
+    public static int count = 0;
+    private int id;
     private String type;
     private String brand;
     private String model;
@@ -6,12 +10,18 @@ public class Vehicle {
     private int year;
     private float price;
     public Vehicle(String type, String brand, String model, int mileage, int year, float price) {
+        this.id = count;
         this.type = type;
         this.brand = brand;
         this.model = model;
         this.mileage = mileage;
         this.year = year;
         this.price = price;
+        count++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getType() {
@@ -62,9 +72,30 @@ public class Vehicle {
         this.price = price;
     }
 
-    public void rentTheVehicle() {}
+    @Override
+    public String toString() {
+        String formattedPrice = String.format("%,.2f", price);
 
-    public void drive(int kilometers) {
-        mileage += kilometers;
+        return String.format("%-5d %-10s %-15s %-15s %-10d %-5d %-15.2f%n",
+                this.id,
+                this.type,
+                this.brand,
+                this.model,
+                this.mileage,
+                this.year,
+                this.price);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Vehicle vehicle = (Vehicle) obj;
+        return id == vehicle.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
     }
 }

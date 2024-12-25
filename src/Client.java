@@ -2,23 +2,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
+    private static int count = 0;
+    private int id;
     private String name;
+    private String surname;
     private int age;
-    private String email;
     private String phone;
     private float cashAmount;
     private List<Vehicle> vehicleList = new ArrayList<>();
 
-    public Client(String name, int age, String email, String phone, float cashAmount) {
+    public Client(String name, String surname, int age, String phone, float cashAmount) {
+        this.id = count;
         this.name = name;
+        this.surname = surname;
         this.age = age;
-        this.email = email;
         this.phone = phone;
         this.cashAmount = cashAmount;
+        count++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public void setName(String name) {
@@ -31,14 +47,6 @@ public class Client {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPhone() {
@@ -77,7 +85,27 @@ public class Client {
         System.out.println();
     }
 
-    public void printClientInfo() {
-        System.out.println(name + "'s phone number is " + phone + ", email is " + email + " and he has " + cashAmount + " amount of cash");
+    @Override
+    public String toString() {
+        return String.format("%-5d %-15s %-15s %-5d %-15s %-15.2f%n",
+                this.id,
+                this.name,
+                this.surname,
+                this.age,
+                this.phone,
+                this.cashAmount);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Client client = (Client) obj;
+        return id == client.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
     }
 }
