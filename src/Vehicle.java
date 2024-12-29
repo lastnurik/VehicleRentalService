@@ -1,24 +1,14 @@
 import java.text.DecimalFormat;
 
 public class Vehicle {
-    public static int count = 0;
-    private int id;
-    private String type;
-    private String brand;
-    private String model;
-    private int mileage;
-    private int year;
-    private float price;
-    public Vehicle(String type, String brand, String model, int mileage, int year, float price) {
-        this.id = count;
-        this.type = type;
-        this.brand = brand;
-        this.model = model;
-        this.mileage = mileage;
-        this.year = year;
-        this.price = price;
-        count++;
-    }
+    protected static int count = 0;
+    protected int id;
+    protected String type;
+    protected String brand;
+    protected String model;
+    protected int mileage;
+    protected int year;
+    protected float price;
 
     public int getId() {
         return id;
@@ -88,8 +78,10 @@ public class Vehicle {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+
         Vehicle vehicle = (Vehicle) obj;
         return id == vehicle.id;
     }

@@ -10,10 +10,11 @@ public class Main {
 
         RentalService rentalService = new RentalService("AutoKz", "Kabanbay Batyr 60A", "info@auto.kz");
         List<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(new Vehicle("Sedan", "Bentley", "Flying Spur", 1000, 2023, 115000000.0f));
-        vehicles.add(new Vehicle("Sedan", "BMW", "M5", 2400, 2022, 80000000.0f));
-        vehicles.add(new Vehicle("SUV", "Lamborghini", "Urus", 2000, 2021, 150000000.0f));
-        vehicles.add(new Vehicle("Sedan", "Chevrolet", "Cobalt", 7000, 2023, 6000000.0f));
+        vehicles.add(new Car("Sedan", "Bentley", "Flying Spur", 1000, 2023, 115000000.0f));
+        vehicles.add(new Car("Sedan", "BMW", "M5", 2400, 2022, 80000000.0f));
+        vehicles.add(new Car("SUV", "Lamborghini", "Urus", 2000, 2021, 150000000.0f));
+        vehicles.add(new Car("Sedan", "Chevrolet", "Cobalt", 7000, 2023, 6000000.0f));
+        vehicles.add(new Motorcycle("Sedan", "Kawasaki", "h2", 7000, 2023, 6000000.0f));
         rentalService.addVehicle(vehicles);
 
         List<Client> clients = new ArrayList<>();
@@ -55,6 +56,9 @@ public class Main {
                     System.out.println("\nThank you for using our system!");
                     return;
 
+                default:
+                    System.out.println("\n[!] Invalid Option! Please try again.");
+                    break;
             }
         }
     }
@@ -99,7 +103,7 @@ public class Main {
                     float price = sc.nextFloat();
                     sc.nextLine();
 
-                    Vehicle newVehicle = new Vehicle(type, brand, model, mileage, year, price);
+                    Vehicle newVehicle = new Car(type, brand, model, mileage, year, price);
                     rentalService.addVehicle(newVehicle);
                     System.out.println("\n[+] Vehicle Added Successfully!");
                     break;
