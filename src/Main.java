@@ -1,27 +1,17 @@
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class Main {
     public static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-
-
         RentalService rentalService = new RentalService("AutoKz", "Kabanbay Batyr 60A", "info@auto.kz");
-        List<Vehicle> vehicles = new ArrayList<>();
-        vehicles.add(new Car("Sedan", "Bentley", "Flying Spur", 1000, 2023, 115000000.0f));
-        vehicles.add(new Car("Sedan", "BMW", "M5", 2400, 2022, 80000000.0f));
-        vehicles.add(new Car("SUV", "Lamborghini", "Urus", 2000, 2021, 150000000.0f));
-        vehicles.add(new Car("Sedan", "Chevrolet", "Cobalt", 7000, 2023, 6000000.0f));
-        vehicles.add(new Motorcycle("Sedan", "Kawasaki", "h2", 7000, 2023, 6000000.0f));
-        rentalService.addVehicle(vehicles);
-
-        List<Client> clients = new ArrayList<>();
-        clients.add(new Client("Arsen", "Ilyasov", 26, "+77057655676", 12500700.5f));
-        clients.add(new Client("Amirhan", "Kairat", 19, "+77052223232", 100000447.3f));
-        rentalService.addClient(clients);
-
         while (true) {
             System.out.println("\n==============================");
             System.out.println(" Welcome to " + rentalService.getRentalName() + " Admin Panel");
